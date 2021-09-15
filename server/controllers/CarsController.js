@@ -20,7 +20,12 @@ export class CarsController extends BaseController {
   async getCars(req, res, next) {
     try {
       const cars = await carsService.getCars(req.query)
-      res.send(cars)
+
+      res.status(200).json({
+        status: 'success',
+        data: cars
+
+      })
     } catch (error) {
       next(error)
     }
@@ -70,7 +75,7 @@ export class CarsController extends BaseController {
       // this sends the car edited info back to the client
       res.send(car)
     } catch (error) {
-
+      next(error)
     }
   }
 }

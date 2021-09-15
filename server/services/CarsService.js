@@ -4,11 +4,13 @@ import { BadRequest, Forbidden } from '../utils/Errors.js'
 import { logger } from '../utils/Logger.js'
 class CarService {
   async getCars(req) {
+    //! Build Query
     const queryObj = { ...req.query }
     const excludedFields = ['page', 'sort', 'limit', 'fields']
     excludedFields.forEach(ef => delete queryObj[ef])
-    const cars = await dbContext.Cars.find(queryObj)
-    logger.log('works')
+    const query = await dbContext.Cars.find(queryObj)
+    // !Execute Query
+    const cars = await query
     return cars
   }
 

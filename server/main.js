@@ -7,6 +7,7 @@ import { createServer } from 'http'
 
 // create server & socketServer
 const app = express()
+
 const port = process.env.PORT || 3000
 
 const httpServer = createServer(app)
