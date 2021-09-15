@@ -1,8 +1,10 @@
 import { dbContext } from '../db/DbContext.js'
 import { BadRequest, Forbidden } from '../utils/Errors.js'
+import { logger } from '../utils/Logger.js'
 class CarService {
-  async getCars() {
-    const cars = await dbContext.Cars.find()
+  async getCars(req) {
+    const cars = await dbContext.Cars.find(req)
+    logger.log('works')
     return cars
   }
 

@@ -33,6 +33,7 @@
     "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.1.0",
+    "nodemon": "^2.0.12",
     "sass": "^1.32.13"
   }
 }
