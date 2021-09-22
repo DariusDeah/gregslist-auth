@@ -19,13 +19,8 @@ export class CarsController extends BaseController {
   // this get cars functions get all the card in my database
   async getCars(req, res, next) {
     try {
-      const cars = await carsService.getCars(req.query)
-
-      res.status(200).json({
-        status: 'success',
-        data: cars
-
-      })
+      const cars = await carsService.getCars()
+      res.send(cars)
     } catch (error) {
       next(error)
     }

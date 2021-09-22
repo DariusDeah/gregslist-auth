@@ -4,18 +4,17 @@ import { BadRequest, Forbidden } from '../utils/Errors.js'
 import { logger } from '../utils/Logger.js'
 class CarService {
   async getCars(req) {
-    //! Build Query
-    const queryObj = { ...req.query }
-    const excludedFields = ['page', 'sort', 'limit', 'fields']
-    excludedFields.forEach(ef => delete queryObj[ef])
-    const query = await dbContext.Cars.find(queryObj)
-    // !Execute Query
-    const cars = await query
-    return cars
+    // // !Filtering
+    // //! Build Query
+    // const queryObj = { ...req.query }
+    // // fields we want exclude out of this query search
+    // const excludedFields = ['page', 'sort', 'limit', 'fields']
+    // excludedFields.forEach(ef => delete queryObj[ef])
+    return await dbContext.Cars.find()// .find method returns a query
   }
 
-  async getCarById(cardId) {
-    const car = await dbContext.Cars.findById(cardId).populate('creator', 'name picture')
+  async getCarById(carId) {
+    const car = await dbContext.Cars.findById(carId).populate('creator', 'name picture')
     if (!car) {
       throw new BadRequest('invalid car id ')
     }
